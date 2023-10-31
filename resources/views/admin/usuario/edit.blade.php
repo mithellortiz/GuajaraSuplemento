@@ -2,6 +2,15 @@
 @extends('template.index')
 
 @section('contenido')
+@if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div class="row">
         <div class="col-md-12">
             <form action="{{route('usuario.update', $usuario->id)}}" method="POST">

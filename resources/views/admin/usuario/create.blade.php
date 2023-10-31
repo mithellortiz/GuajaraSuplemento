@@ -1,15 +1,26 @@
 @extends('template.index')
 @section('titulo','Registrar Usuario')
 @section('contenido')
+@if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
    <form action="{{route('usuario.store')}}" method="post">
         @csrf
         @method('POST')
         <div class="row">
             <div class="col-md-3">
-                <input type="text" name="nombre" id="" class="form-control" required autofocus>
+                <!-- Dentro do seu formulário, provavelmente dentro de uma tag <form>... -->
+                <input type="text" name="nombre_persona" value="{{ old('nombre_persona') }}" class="form-control" required>
+
             </div>
             <div class="col-md-3">
-                <input type="text" name="apellido" id="" class="form-control" required>
+                <input type="text" name="apellido_persona" id="" class="form-control" required>
             </div>
             <div class="col-md-3">
                 <input type="text" name="email" id="" class="form-control" required>

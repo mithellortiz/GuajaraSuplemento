@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Models\Persona; //importando la clase Persona
+use Illuminate\Support\Facades\Hash;
 class usuarioController extends Controller
 {
     //para index
@@ -19,22 +20,44 @@ class usuarioController extends Controller
      }
     //store
     public function store(Request $request){
+
+        $validatedData = $request->validate([
+            'nombre_persona' => 'required|string',
+            'apellido_persona' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+            // ... adicione validações para os outros campos se necessário
+        ]);
         //Primeiro, crea una nueva Persona
         $persona = new Persona();
         $persona->nombre = $request->nombre_persona;
         $persona->apellido = $request->apellido_persona;
-        // ... (otros campos pos si acaso)
-        $persona->save();
-
-        //Luego, crea un nuevo Usuario que referencia a esa Pesona
-        $usuario = new Usuario();
-        // Asegúrate de tener una columna persona_id o similar en tu tabla Usuario
-        $usuario->persona_id = $persona->id;
-        $usuario->email = $request->email;
-        $usuario->password = $request->password;
-        // ... (otros campos si los hay)
-        $usuario->save();
     
+        // Se você está recebendo 'celular' e 'direccion' do formulário, adicione-os aqui
+        // Un valor por defecto si es null
+        $persona->celular = $request->celular_persona ? $request->celular_persona : ''; 
+        // Un valor por defecto si es null
+        $persona->direccion = $request->direccion_persona ? $request->direccion_persona : '';  
+
+        // ... (outros campos, se houver)
+        $persona->save();
+        if(!$persona->wasRecentlyCreated){
+            return redirect()->back()->with('error', 'Hubo un problema al guardar la persona.');
+        }
+        
+        // Em seguida, cria um novo Usuario que referencia essa Persona
+        $usuario = new Usuario();
+        $usuario->persona_id = $persona->id;
+        $usuario->nombre = $request->nombre_persona;  // Supondo que você queira salvar o mesmo nome e sobrenome no Usuario
+        $usuario->apellido = $request->apellido_persona;
+        $usuario->email = $request->email;
+        $usuario->password = Hash::make($request->password); // Não se esqueça de fazer hash da senha antes de salvar
+        // ... (outros campos, se houver)
+        $usuario->save();
+        if(!$usuario->wasRecentlyCreated){
+            return redirect()->back()->with('error', 'Hubo un problema al guardar el usuario.');
+        }
+        
         return redirect()->route('usuario.index');
     }
     //edit

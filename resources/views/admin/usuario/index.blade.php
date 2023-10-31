@@ -1,6 +1,6 @@
 <!-- invocando plantilla -->
 @extends('template.index')
-
+@section('titulo','Lista de Usuario')
 @section('contenido')
     <div class="row">
         <div class="col-md-12">
@@ -11,34 +11,42 @@
                         <th>Apellido</th>
                         <th>Email</th>
                         <th>Password</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($usuarios as $item)
-                        <tr> 
-                            <!-- <td>{{$item->nombre.' '.$item->apellido}}</td> -->
-                            <!-- mostrará el nombre y apellido que provienen de la clase Persona -->
-                            <td>{{$item->getNombreFromPersona().' '.$item->getApellidoFromPersona()}}</td>
-                            <td>{{$item->email}}</td>
-                            <td>{{$item->password}}</td>
+                    @forelse($usuarios as $usuario)
+                        <tr>
+                            <td>{{$usuario->getNombreFromPersona()}}</td>
+                            <td>{{$usuario->getApellidoFromPersona()}}</td>
+                            <td>{{$usuario->email}}</td>
+                            <td>{{$usuario->password}}</td>
                             <td>
-                                <a href="{{route('usuario.edit', $item->id)}}"
+                                <a href="{{route('usuario.edit', $usuario->id)}}"
                                     class="btn btn-small btn-primary">
                                     <i class="fa fa-edit"></i>
                                 </a>
-                                <a href="{{route('usuario.destroy', $item->id)}}"
-                                    onclick="return confirm('Esta seguro de eliminar el dato?')"
-                                    class="btn btn-danger btn-small">
-                                    <i class="fa fa-trash"></i>
-                                </a>
+                                <form action="{{route('usuario.destroy', $usuario->id)}}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-small" onclick="return confirm('Esta seguro de eliminar el dato?')">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="5">No hay usuarios registrados</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
     </div>
     <div class="row" style="font-size: 12px; height: 16px; padding: 0; line-height: 16px; text-align: center;">
-        <div class="col-md-12" >
-            {{$usuarios->render()}}
+        <div class="col-md-12">
+            {{$usuarios->links()}}
         </div>
+    </div>
+@endsection

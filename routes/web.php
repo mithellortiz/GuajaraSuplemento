@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\personaController;
 use App\Http\Controllers\clienteController;
 use App\Http\Controllers\usuarioController;
+use App\Http\Controllers\TipoUsuarioController; // Importe o controller no início do arquivo
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,7 +31,18 @@ Route::get('/cliente', function () {
 Route::get('usuario', function () {
     return view('template.index');
 });
+Route::get('/tipousuario', function () {
+    return view('template.index');
+});
 
+// TIPO DE USUÁRIO
+Route::get('tipousuario', [tipoUsuarioController::class, "index"])->name('tipousuario.index');
+Route::get('tipousuario/create', [tipoUsuarioController::class, "create"])->name('tipousuario.create');
+Route::post('tipousuario', [tipoUsuarioController::class, "store"])->name('tipousuario.store');
+Route::get('tipousuario/{id}', [tipoUsuarioController::class, "show"])->name('tipousuario.show');
+Route::get('tipousuario/{id}/edit', [tipoUsuarioController::class, "edit"])->name('tipousuario.edit');
+Route::post('tipousuario/{id}', [tipoUsuarioController::class, "update"])->name('tipousuario.update');
+Route::get('tipousuario/{id}/destroy', [tipoUsuarioController::class, "destroy"])->name('tipousuario.destroy');
 //USUARIO
 Route::get('usuario', [usuarioController::class, "index"])->name('usuario.index');
 Route::get('usuario/create', [usuarioController::class, "create"])->name('usuario.create');

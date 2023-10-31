@@ -21,6 +21,6 @@ class Usuario extends Model
     }
     public function getApellidoFromPersona()
 {
-        return $this->pesona ? $this->persona->apellido : null;
+        return $this->persona ? $this->persona->apellido : null;
 }
 }
