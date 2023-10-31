@@ -47,8 +47,25 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                M e n u
             </div>
+                       <!-- Usuario -->
+           <li class="nav-item">
+               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                   <i class="far fa-smile"></i>
+                   <span>Gestionar Usuario</span>
+               </a>
+               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                   <div class="bg-white py-2 collapse-inner rounded">
+                       <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                       <a class="collapse-item" href= "{{route('usuario.index')}}">Usuario</a>
+                       <a class="collapse-item" href="{{route('usuario.create')}}">Registra Usuario</a>
+                   </div>
+               </div>
+           </li>
+           <!-- Divider -->
+           <hr class="sidebar-divider my-0">
             
             <!-- PERSONA -->
             <li class="nav-item">
@@ -339,7 +356,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Trabalho Final de Grado &copy; Meu Website 2023</span>
                     </div>
                 </div>
             </footer>

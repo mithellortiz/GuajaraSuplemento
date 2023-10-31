@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\personaController;
 use App\Http\Controllers\clienteController;
+use App\Http\Controllers\usuarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,11 +26,19 @@ Route::get('/persona', function () {
 Route::get('/cliente', function () {
     return view('template.index');
 });
-// 
-// Route::get('persona', function () {
-    // return view('persona');
-// });
 
+Route::get('usuario', function () {
+    return view('template.index');
+});
+
+//USUARIO
+Route::get('usuario', [usuarioController::class, "index"])->name('usuario.index');
+Route::get('usuario/create', [usuarioController::class, "create"])->name('usuario.create');
+Route::post('usuario', [usuarioController::class, "store"])->name('usuario.store');
+Route::get('usuario/{id}/edit', [usuarioController::class, "edit"])->name('usuario.edit');
+Route::post('usuario/{id}', [usuarioController::class, "update"])->name('usuario.update');
+Route::get('usuario/{id}/destroy', [usuarioController::class, "destroy"])->name('usuario.destroy');
+//PERSONA
 Route::get('persona', [personaController::class, "index"])->name('persona.index');
 Route::get('persona/create', [personaController::class, "create"])->name('persona.create');
 Route::post('persona', [personaController::class, "store"])->name('persona.store');
