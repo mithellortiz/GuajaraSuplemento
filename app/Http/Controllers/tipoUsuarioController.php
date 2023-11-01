@@ -9,13 +9,16 @@ class TipoUsuarioController extends Controller
 {
     public function index()
     {
-        $tipos = TipoUsuario::all();
-        return view('tipousuario.index', compact('tipos'));
+        $tipos = TipoUsuario::where('estado', 1)->orderBy('id', 'desc')->paginate(2);
+        return view('admin/tipousuario/index')->with('tipos', $tipos);
+
+        // $tipos = TipoUsuario::all();
+        // return view('tipousuario.index', compact('tipos'));
     }
 
     public function create()
     {
-        return view('tipousuario.create');
+        return view('admin/tipousuario/create');
     }
     public function store(Request $request)
     {  
