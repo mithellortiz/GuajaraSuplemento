@@ -9,11 +9,10 @@ class TipoUsuarioController extends Controller
 {
     public function index()
     {
-        $tipos = TipoUsuario::where('estado', 1)->orderBy('id', 'desc')->paginate(2);
-        return view('admin/tipousuario/index')->with('tipos', $tipos);
-
-        // $tipos = TipoUsuario::all();
-        // return view('tipousuario.index', compact('tipos'));
+       // $tipos = TipoUsuario::where('estado', 1)->orderBy('id', 'desc')->paginate(2);
+        //return view('admin/tipousuario/index')->with('tipos', $tipos);
+        $tipos = TipoUsuario::all();
+        return view('admin/tipousuario/index', ['tipos' => $tipos]);
     }
 
     public function create()
@@ -22,46 +21,37 @@ class TipoUsuarioController extends Controller
     }
     public function store(Request $request)
     {  
-    // Validação de dados
-    $request->validate([
-        'descricao' => 'required|string|max:255|unique:tipousuarios',
-    ]);
-
-    // Cria e salva o novo tipo de usuário
-    $tipo = new TipoUsuario();
-    $tipo->descricao = $request->descricao;
-    $tipo->save();
-
-    // Redireciona para a lista de tipos de usuários com uma mensagem de sucesso
-    return redirect()->route('tipousuario.index')->with('success', 'Tipo de usuário criado com sucesso!');
+    try {
+        $validatedData = $request->validate([
+            'nombre_tipo' => 'required',
+            // ... outras regras de validação ...
+        ]);
+        
+        $tipo = new TipoUsuario($validatedData);
+        $tipo->save();
+        
+        return redirect()->route('tipousuario.index')->with('success', 'Tipo de usuário criado com sucesso!');
+    } catch (\Exception $e) {
+        // Aqui capturamos qualquer exceção que possa ocorrer ao tentar salvar
+        return redirect()->back()->with('error', 'Houve um erro ao tentar salvar: ' . $e->getMessage());
     }
-
+    }
 
     public function show($id)
     {
-        $tipo = TipoUsuario::findOrFail($id);
-        return view('tipousuario.show', compact('tipo'));
+        return view('admin/tipousuario/show', ['tipo' => $tipoUsuario]);
     }
 
-    public function edit($id)
+    public function edit(TipoUsuario $tipoUsuario)
     {
-        $tipo = TipoUsuario::findOrFail($id);
-        return view('tipousuario.edit', compact('tipo'));
+        //$tipo = TipoUsuario::findOrFail($id);
+        //return view('tipousuario.edit', compact('tipo'));
+        return view('admin/tipousuario/edit', ['tipo' => $tipoUsuario]);
     }
-    public function update(Request $request, $id)
-        {
-    // Validação de dados
-    $request->validate([
-        'descricao' => 'required|string|max:255|unique:tipousuarios,descricao,' . $id,
-    ]);
-
-    // Busca o tipo de usuário pelo ID e atualiza os dados
-    $tipo = TipoUsuario::findOrFail($id);
-    $tipo->descricao = $request->descricao;
-    $tipo->save();
-
-    // Redireciona para a lista de tipos de usuários com uma mensagem de sucesso
-    return redirect()->route('tipousuario.index')->with('success', 'Tipo de usuário atualizado com sucesso!');
+    public function update(Request $request, TipoUsuario $tipoUsuario)
+    {
+        $tipoUsuario->update($request->all());
+        return redirect()->route('tipousuario.index');
     }
 
     public function destroy($id)

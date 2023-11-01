@@ -1,6 +1,6 @@
-@extends('layouts.app')
-
-@section('content')
+<!-- @extends('layouts.app') -->
+@extends('template.index')
+@section('contenido')
 <div class="container">
     <h1>Tipos de Usuários</h1>
     <a href="{{ route('tipousuario.create') }}" class="btn btn-primary mb-2">Adicionar Novo Tipo</a>
@@ -14,17 +14,14 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($tiposUsuarios as $tipo)
+            @foreach($tipos as $tipo)
             <tr>
-                <td>{{ $tipo->getId() }}</td>
-                <td>{{ $tipo->getDescricao() }}</td>
+                <td>{{ $tipo->id }}</td>
+                <td><a href="{{ route('tipoUsuario.show', $tipo->id) }}">{{ $tipo->nombre_tipo }}</a></td>
                 <td>
-                    <a href="{{ route('tipousuario.edit', $tipo->getId()) }}" class="btn btn-warning">Editar</a>
-                    <form action="{{ route('tipousuario.destroy', $tipo->getId()) }}" method="POST" class="d-inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Excluir</button>
-                    </form>
+                    <!-- Aqui você pode adicionar botões para editar, deletar etc. -->
+                    <a href="{{ route('tipoUsuario.edit', $tipo->id) }}" class="btn btn-warning">Editar</a>
+                    <!-- Adicione outras ações conforme necessário -->
                 </td>
             </tr>
             @endforeach

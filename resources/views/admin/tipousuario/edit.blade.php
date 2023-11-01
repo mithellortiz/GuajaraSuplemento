@@ -1,20 +1,14 @@
-@extends('layouts.app')
-
-@section('content')
+<!-- @extends('layouts.app') -->
+@extends('template.index')
+@section('contenido')
 <div class="container">
-    <h1>Editar Tipo de Usuário</h1>
-
-    <form action="{{ route('tipousuario.update', $tipoUsuario->getId()) }}" method="POST">
+    <h1>Editar Tipo de Usuario</h1>
+    <form action="{{ route('tipousuario.update', $tipo) }}" method="post">
         @csrf
         @method('PUT')
-
-        <div class="form-group">
-            <label for="descricao">Descrição</label>
-            <input type="text" name="descricao" id="descricao" class="form-control" value="{{ $tipoUsuario->getDescricao() }}" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Atualizar</button>
-        <a href="{{ route('tipousuario.index') }}" class="btn btn-secondary">Cancelar</a>
+        <label>Nome: <input type="text" name="nombre_tipo" value="{{ $tipo->nombre_tipo }}"></label>
+        <button type="submit">Atualizar</button>
     </form>
+
 </div>
 @endsection

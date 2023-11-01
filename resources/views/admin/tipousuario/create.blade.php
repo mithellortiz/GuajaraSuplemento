@@ -1,19 +1,24 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <h1>Adicionar Novo Tipo de Usuário</h1>
-
-    <form action="{{ route('tipousuario.store') }}" method="POST">
+<!-- @extends('layouts.app') -->
+@extends('template.index')
+@section('contenido')
+    <h1>Criar Tipo de Usuario</h1>
+    <form action="{{ route('tipousuario.store') }}" method="post">
         @csrf
-
-        <div class="form-group">
-            <label for="descricao">Descrição</label>
-            <input type="text" name="descricao" id="descricao" class="form-control" required>
+        @method('POST')
+        <div class="row">
+            <div class="col-md-3">
+                <input type="text" name="nombre_tipo" id="" class="form-control" required autofocus>
+            </div>
+            <!-- <label>Nome: <input type="text" name="nombre_tipo"></label> -->
         </div>
-
-        <button type="submit" class="btn btn-primary">Salvar</button>
-        <a href="{{ route('tipousuario.index') }}" class="btn btn-secondary">Cancelar</a>
+        <!-- Comando para por o botao pra direita ->(style="display: flex; justify-content: flex-end;") -->
+        <div class="row" style="display: flex; justify-content: flex-end;"  >
+            <div class="col-md-3">
+                <button type="submit" name="nombre_tipo" class="btn btn-success btn-block mt-3 pull-right">
+                    <i class="fa fa-plus" ></i>
+                    Registrar
+                </button>
+            </div>
+        </div>
     </form>
-</div>
 @endsection
