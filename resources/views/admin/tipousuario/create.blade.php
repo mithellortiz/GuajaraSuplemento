@@ -5,6 +5,16 @@
     <form action="{{ route('tipousuario.store') }}" method="post">
         @csrf
         @method('POST')
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="row">
             <div class="col-md-3">
                 <input type="text" name="nombre_tipo" id="" class="form-control" required autofocus>
@@ -14,7 +24,7 @@
         <!-- Comando para por o botao pra direita ->(style="display: flex; justify-content: flex-end;") -->
         <div class="row" style="display: flex; justify-content: flex-end;"  >
             <div class="col-md-3">
-                <button type="submit" name="nombre_tipo" class="btn btn-success btn-block mt-3 pull-right">
+                <button type="submit" class="btn btn-success btn-block mt-3 pull-right">
                     <i class="fa fa-plus" ></i>
                     Registrar
                 </button>

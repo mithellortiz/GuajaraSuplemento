@@ -41,7 +41,8 @@ Route::get('tipousuario/create', [tipoUsuarioController::class, "create"])->name
 Route::post('tipousuario', [tipoUsuarioController::class, "store"])->name('tipousuario.store');
 Route::get('tipousuario/{id}', [tipoUsuarioController::class, "show"])->name('tipousuario.show');
 Route::get('tipousuario/{id}/edit', [tipoUsuarioController::class, "edit"])->name('tipousuario.edit');
-Route::post('tipousuario/{id}', [tipoUsuarioController::class, "update"])->name('tipousuario.update');
+Route::put('tipousuario/{id}', [tipoUsuarioController::class, "update"])->name('tipousuario.update');
+//Route::put('/tipousuario/{id}', 'TipoUsuarioController@update')->name('tipousuario.update');
 Route::get('tipousuario/{id}/destroy', [tipoUsuarioController::class, "destroy"])->name('tipousuario.destroy');
 //USUARIO
 Route::get('usuario', [usuarioController::class, "index"])->name('usuario.index');
