@@ -20,7 +20,9 @@
                             <td>{{$usuario->getNombreFromPersona()}}</td>
                             <td>{{$usuario->getApellidoFromPersona()}}</td>
                             <td>{{$usuario->email}}</td>
-                            <td>{{$usuario->password}}</td>
+                            <!-- <td>{{ $usuario->password }}</td> -->
+                            <td>********</td>
+                            <!-- <td>{{ str_repeat('*', strlen($usuario->password)) }}</td> -->
                             <td>
                                 <a href="{{route('usuario.edit', $usuario->id)}}"
                                     class="btn btn-small btn-primary">

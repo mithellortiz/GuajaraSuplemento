@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TipoUsuario;  // Certifique-se de que o model TipoUsuario exista
+use Illuminate\Support\Facades\Log;
 
 class TipoUsuarioController extends Controller
 {
     public function index()
     {
-       // $tipos = TipoUsuario::where('estado', 1)->orderBy('id', 'desc')->paginate(2);
+        // $tipos = TipoUsuario:: - "Inicia a construção da consulta ao modelo TipoUsuario (representa a tabela de tipos de usuários no banco de dados).
+        // where('estado', 1)-> - "Filtra os registros da tabela para obter apenas aqueles onde o valor da coluna 'estado' é igual a 1.
+        // orderBy('id', 'asc')-> - "Ordena os registros filtrados pela coluna 'id' em ordem crescente. Assim, o registro com o menor 'id' aparecerá primeiro.
+        // paginate(5); - "Divide os resultados em páginas, retornando apenas 5 registros por página.
+        $tipos = TipoUsuario::where('estado', 1)->orderBy('id', 'asc')->paginate(5);
         //return view('admin/tipousuario/index')->with('tipos', $tipos);
-        $tipos = TipoUsuario::all();
+        //$tipos = TipoUsuario::all();
         return view('admin/tipousuario/index', ['tipos' => $tipos]);
     }
 
@@ -49,35 +54,43 @@ class TipoUsuarioController extends Controller
         // Retorna a view com o TipoUsuario
         return view('admin/tipousuario/show', ['tipo' => $tipoUsuario]);
     }
+
     public function edit($id)
-        {
-            $tipo = TipoUsuario::find($id);
-            if (!$tipo) {
-                // ID não encontrado. Talvez redirecionar para uma página de erro.
-                return redirect()->route('tipousuario.index')->with('error', 'ID não encontrado');
-            }
-            return view('path_to_your_edit_view', compact('tipo'));
+    {
+        // Use a variável com nome $tipoUsuario, como foi feito em outras partes do código
+        $tipoUsuario = TipoUsuario::find($id);
+
+        if (!$tipoUsuario) {
+            // ID não encontrado. Talvez redirecionar para uma página de erro.
+            return redirect()->route('tipousuario.index')->with('error', 'ID não encontrado');
         }
+        // Aqui, retorne a variável $tipoUsuario para a view
+        return view('admin/tipousuario/edit', compact('tipoUsuario'));
+    }
 
     public function update(Request $request, $id)
     {
-           // Validação básica
-            $validatedData = $request->validate([
-                'nome_tipo' => 'required|max:255',  // Exemplo de regra de validação
-                // Outras regras de validação para outros campos, se necessário
-            ]);
+        Log::info('Dados recebidos:', $request->all());
+        $tipoUsuario = TipoUsuario::find($id);
+        if (!$tipoUsuario) {
+            return redirect()->route('tipousuario.index')->with('error', 'Tipo de usuário não encontrado.');
+        }
 
-            $tipoUsuario->update($validatedData);
+        $tipoUsuario->update($request->all());
 
-            // Redirecionamento com mensagem de sucesso
-            return redirect()->route('tipousuario.index')->with('success', 'Tipo de usuário atualizado com sucesso!');
+        Log::info('TipoUsuario após atualização:', $tipoUsuario->toArray());
+
+        // Redirecionamento com mensagem de sucesso
+        return redirect()->route('tipousuario.index')->with('success', 'Tipo de usuário atualizado com sucesso!');
     }
+
 
     public function destroy($id)
     {  
     // Busca o tipo de usuário pelo ID e exclui
     $tipo = TipoUsuario::find($id);
     $tipo->estado = 0;
+    $tipo->delete(); // Isto irá apenas marcar como deletado (soft delete)
     $tipo->save();
 
     // Redireciona para a lista de tipos de usuários com uma mensagem de sucesso

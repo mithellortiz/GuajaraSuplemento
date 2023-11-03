@@ -16,16 +16,19 @@
         <div class="row">
             <div class="col-md-3">
                 <!-- Dentro do seu formulário, provavelmente dentro de uma tag <form>... -->
+                <label for="nombre_persona">Nombre Persona</label>
                 <input type="text" name="nombre_persona" value="{{ old('nombre_persona') }}" class="form-control" required>
-
             </div>
             <div class="col-md-3">
+                <label for="apellido_persona">Apellido de Persona</label>
                 <input type="text" name="apellido_persona" id="" class="form-control" required>
             </div>
             <div class="col-md-3">
+                <label for="email">E-mail</label>
                 <input type="text" name="email" id="" class="form-control" required>
             </div>
             <div class="col-md-3">
+            <label for="password">Contraseña</label>
                <input type="text" name="password" id="" class="form-control" required>
             </div>
         </div>

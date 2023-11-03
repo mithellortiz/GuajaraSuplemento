@@ -49,32 +49,49 @@
             <div class="sidebar-heading">
                 M e n u
             </div>
-                       <!-- Usuario -->
-           <li class="nav-item">
-               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                   aria-expanded="true" aria-controls="collapseTwo">
+            <!-- USUARIO -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsuario"
+                   aria-expanded="true" aria-controls="collapseUsuario">
                    <i class="far fa-smile"></i>
                    <span>Gestionar Usuario</span>
-               </a>
-               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                   <div class="bg-white py-2 collapse-inner rounded">
+                </a>
+                <div id="collapseUsuario" class="collapse" aria-labelledby="headingUsuario" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
                        <!-- <h6 class="collapse-header">Custom Components:</h6> -->
                        <a class="collapse-item" href= "{{route('usuario.index')}}">Usuario</a>
                        <a class="collapse-item" href="{{route('usuario.create')}}">Registra Usuario</a>
-                   </div>
-               </div>
-           </li>
-           <!-- Divider -->
-           <hr class="sidebar-divider my-0">
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+                       <!-- TIPO USUARIO -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTipoUsuario"
+                    aria-expanded="true" aria-controls="collapseTipoUsuario">
+                    <i class="far fa-smile"></i>
+                    <span>Gestionar Tipo Usuario</span>
+                </a>
+                <div id="collapseTipoUsuario" class="collapse" aria-labelledby="headingTipoUsuario" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                        <a class="collapse-item" href= "{{route('tipousuario.index')}}">Tipo de Usuario</a>
+                        <!-- <a class="collapse-item" href="{{route('persona.create')}}">Registra Persona</a> -->
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
             
             <!-- PERSONA -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePersona"
+                    aria-expanded="true" aria-controls="collapsePersona">
                     <i class="far fa-smile"></i>
                     <span>Gestionar Persona</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapsePersona" class="collapse" aria-labelledby="headingPersona" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Custom Components:</h6> -->
                         <a class="collapse-item" href= "{{route('persona.index')}}">Persona</a>
@@ -84,23 +101,36 @@
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
             <!-- Divider -->
-            <!-- <hr class="sidebar-divider"> -->
-       <!-- Nav Item - Pages Collapse Menu -->
+            <!-- CLIENTE -->
+            <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsecliente"
+                        aria-expanded="true" aria-controls="collapsecliente">
+                        <i class="far fa-smile"></i>
+                        <span>Gestionar Cliente</span>
+                    </a>
+                    <div id="collapsecliente" class="collapse" aria-labelledby="headingcliente" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="{{route('cliente.index')}}">Cliente</a>
+                            <a class="collapse-item" href="{{route('cliente.index')}}">Tipo de Cliente</a>
+                        </div>
+                    </div>
+            </li>
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="far fa-smile"></i>
-                    <span>Cliente</span>
+                    <span>Gestionar Producto</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{route('cliente.index')}}">Cliente</a>
-                        <a class="collapse-item" href="{{route('cliente.index')}}">Tipo de Cliente</a>
+                        <a class="collapse-item" href="{{route('cliente.index')}}">Producto</a>
+                        <a class="collapse-item" href="{{route('cliente.index')}}">Tipo de Producto</a>
                     </div>
                 </div>
             </li>
+
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
                 <a class="nav-link" href="tables.html">

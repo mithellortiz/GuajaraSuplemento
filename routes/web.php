@@ -65,4 +65,13 @@ Route::post('cliente', [clienteController::class, "store"])->name('cliente.store
 Route::get('cliente/{id}/edit', [clienteController::class, "edit"])->name('cliente.edit');
 Route::post('cliente/{id}', [clienteController::class, "update"])->name('cliente.update');
 Route::get('cliente/{id}/destroy', [clienteController::class, "destroy"])->name('cliente.destroy');
+// PRODUCTO
+use App\Http\Controllers\productoController;
+
+Route::get('producto', [productoController::class, "index"])->name('producto.index');
+Route::get('producto/create', [productoController::class, "create"])->name('producto.create');
+Route::post('producto', [productoController::class, "store"])->name('producto.store');
+Route::get('producto/{id}/edit', [productoController::class, "edit"])->name('producto.edit');
+Route::put('producto/{id}', [productoController::class, "update"])->name('producto.update');
+Route::get('producto/{id}/destroy', [productoController::class, "destroy"])->name('producto.destroy');
 

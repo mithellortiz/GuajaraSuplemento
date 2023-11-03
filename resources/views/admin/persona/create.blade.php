@@ -6,15 +6,19 @@
         @method('POST')
         <div class="row">
             <div class="col-md-3">
+                <label for="nombre">Nombre de Persona</label>
                 <input type="text" name="nombre" id="" class="form-control" required autofocus>
             </div>
             <div class="col-md-3">
+                <label for="apellido">Apellido</label>
                 <input type="text" name="apellido" id="" class="form-control" required>
             </div>
             <div class="col-md-3">
+                <label for="celular">Nº Celular</label>
                 <input type="text" name="celular" id="" class="form-control" required>
             </div>
             <div class="col-md-3">
+                <label for="direccion">Direccion</label>
                <input type="text" name="direccion" id="" class="form-control" required>
             </div>
         </div>

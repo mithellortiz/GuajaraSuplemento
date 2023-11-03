@@ -1,7 +1,8 @@
 <!-- @extends('layouts.app') -->
 @extends('template.index')
+@section('titulo','Registrar Tipo Usuario')
 @section('contenido')
-    <h1>Criar Tipo de Usuario</h1>
+    <!-- <h1>Criar Tipo de Usuario</h1> -->
     <form action="{{ route('tipousuario.store') }}" method="post">
         @csrf
         @method('POST')
@@ -17,6 +18,7 @@
 
         <div class="row">
             <div class="col-md-3">
+                <label for="nombre_tipo">Nombre Tipo Usuario</label>
                 <input type="text" name="nombre_tipo" id="" class="form-control" required autofocus>
             </div>
             <!-- <label>Nome: <input type="text" name="nombre_tipo"></label> -->

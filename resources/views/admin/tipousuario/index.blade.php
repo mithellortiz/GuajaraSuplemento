@@ -4,7 +4,7 @@
 <!-- Mudar para class="row" -->
     <div class="row">
         <div class="col-md-12">
-            <h1>Tipos de Usuários</h1>
+            <!-- <h1>Tipos de Usuários</h1> -->
             <table class="table table-striped">
                 <thead>
                     <tr>
