@@ -40,6 +40,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $productos->links() }} {{-- Paginação --}}
         </div>
     </div>
     <div class="row" style="font-size: 12px; height: 16px; padding: 0; line-height: 16px; text-align: center;">

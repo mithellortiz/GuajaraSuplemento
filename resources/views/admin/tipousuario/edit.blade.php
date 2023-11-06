@@ -1,4 +1,3 @@
-<!-- @extends('layouts.app') -->
 @extends('template.index')
 @section('titulo','Editar Tipo de Usuario')
 @section('contenido')

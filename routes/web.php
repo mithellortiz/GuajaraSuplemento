@@ -5,6 +5,8 @@ use App\Http\Controllers\personaController;
 use App\Http\Controllers\clienteController;
 use App\Http\Controllers\usuarioController;
 use App\Http\Controllers\TipoUsuarioController; // Importe o controller no início do arquivo
+use App\Http\Controllers\productoController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +34,10 @@ Route::get('usuario', function () {
     return view('template.index');
 });
 Route::get('/tipousuario', function () {
+    return view('template.index');
+});
+
+Route::get('/producto', function () {
     return view('template.index');
 });
 
@@ -66,7 +72,6 @@ Route::get('cliente/{id}/edit', [clienteController::class, "edit"])->name('clien
 Route::post('cliente/{id}', [clienteController::class, "update"])->name('cliente.update');
 Route::get('cliente/{id}/destroy', [clienteController::class, "destroy"])->name('cliente.destroy');
 // PRODUCTO
-use App\Http\Controllers\productoController;
 
 Route::get('producto', [productoController::class, "index"])->name('producto.index');
 Route::get('producto/create', [productoController::class, "create"])->name('producto.create');
