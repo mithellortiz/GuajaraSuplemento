@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>Guajara-Suplementos</title>
 
     <!-- Custom fonts for this template -->
     <link href="{{asset('css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -39,7 +39,6 @@
                 <!-- </div> -->
                 <div class="sidebar-brand-text mx-3">Guajara <sup>Suplemento</sup></div>
             </a>
-
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <!-- Divider -->
@@ -131,12 +130,6 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item active">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -155,7 +148,7 @@
             <!-- Main Content -->
             <div id="content">
 
-                <!-- Topbar -->
+                <!-- Topbar  toda parte de cima do menu buscar-->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
@@ -164,15 +157,20 @@
                             <i class="fa fa-bars"></i>
                         </button>
                     </form>
-
-                    <!-- Topbar Search -->
-                    <form
+                   
+                    <!-- Topbar Search , Nome de dentro do BUSCADOR -->
+                    <form action="{{route('persona.index')}}"
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" 
+                                placeholder="Buscar..."
+                                aria-label="Search"
+                                aria-describedby="basic-addon2"
+                                required
+                                autofocus
+                                name="buscador"/>
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -182,7 +180,7 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) BUSCADOR -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -363,8 +361,9 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+                    
                     <div class="card shadow mb-4 nt-4">
+                        <span>@yield('nav-titulo')</span>
                         <div class="card-header">
 
                             <!-- <i class="fas fa-table me-1"></i> -->

@@ -16,7 +16,22 @@
                          <input type="text" name="tipocliente" id="tipocliente" 
                           class="form-control" placeholder="Tipocliente"
                           value="{{$cliente->tipocliente}}" required>
-                     </div>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="nombre" id="nombre"
+                        class="form-control" placeholder="Nombre"
+                        value="{{$cliente->nombre}}" required>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="apellido" id="apellido"
+                        class="form-control" placeholder="Apellido" 
+                        value="{{$cliente->apellido}}" required>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="direccion" id="direccion"
+                        class="form-control" placeholder="Dirección" 
+                        value="{{$cliente->direccion}}" required>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-9">

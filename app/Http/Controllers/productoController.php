@@ -22,6 +22,9 @@ class ProductoController extends Controller
     // Function to store a new product
     public function store(Request $request){
         $producto = new Producto($request->all());
+        // Se categoria_nombre precisa ser inserido, você deve garantir que ele está vindo do $request
+        // ou definir manualmente assim:
+        $producto->categoria_nombre = 'Algum Valor'; // Substitua 'Algum Valor' pelo valor real necessário.
         $producto->save();
         return redirect()->route('producto.index');
     }

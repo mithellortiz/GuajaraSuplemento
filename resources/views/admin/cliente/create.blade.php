@@ -11,6 +11,15 @@
             <div class="col-md-3">
                 <input type="text" name="tipocliente" id="" class="form-control" required>
             </div>
+            <div class="col-md-3">
+                <input type="text" name="nombre" id="nombre" class="form-control" required>
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="apellido" id="apellido" class="form-control" required>
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="direccion" id="direccion" class="form-control" required>
+            </div>
         </div>
         <!-- Comando para por o botao pra direita ->(style="display: flex; justify-content: flex-end;") -->
         <div class="row" style="display: flex; justify-content: flex-end;"  >

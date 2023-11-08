@@ -12,7 +12,6 @@
                         <th>Nombre</th>
                         <th>Descripción</th>
                         <th>Precio</th>
-                        <th>Estado</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
@@ -24,7 +23,6 @@
                             <td>{{$producto->nombre}}</td>
                             <td>{{$producto->descripción}}</td>
                             <td>{{$producto->precio}}</td>
-                            <td>{{$producto->estado}}</td>
                             <td>
                                 <a href="{{route('producto.edit', $producto->id)}}"
                                     class="btn btn-small btn-primary">
